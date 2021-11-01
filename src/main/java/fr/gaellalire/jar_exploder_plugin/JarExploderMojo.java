@@ -197,7 +197,7 @@ public class JarExploderMojo extends AbstractMojo {
                 }
 
                 // add our property file (space lost !!!)
-                File explodedAssemblyFile = new File("exploded-assembly.properties");
+                File explodedAssemblyFile = new File(project.getBuild().getDirectory(), "exploded-assembly.properties");
                 properties.store(new FileOutputStream(explodedAssemblyFile), null);
                 zos.putArchiveEntry(new ZipArchiveEntry(explodedAssemblyFile, "META-INF/exploded-assembly.properties"));
                 IOUtils.copy(new FileInputStream(explodedAssemblyFile), zos);
